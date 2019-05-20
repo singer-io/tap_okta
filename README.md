@@ -16,6 +16,7 @@ This tap:
   - pip3
   - python 3.5+
   - mkvirtualenv
+  
 ## Installation
 In the directory:
   - $ mkvirtualenv -p python3 tap-okta
@@ -27,10 +28,15 @@ Source config file
 
 {
   "accept": "application/json",
+  
   "content-type": "application/json",
+  
   "Authorization": "SSWS 0XXXXXX",
+  
   "password": "",
+  
   "username": "",
+  
   "service_url": ""
 }
 
