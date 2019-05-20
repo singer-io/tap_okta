@@ -12,4 +12,8 @@ This tap:
   - Outputs the schema for each resource
   - Full table load 
   
-# Requirements
+## Requirements
+  - pip3
+  - python 3.5+
+  - mkvirtualenv
+
