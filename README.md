@@ -24,7 +24,7 @@ In the directory:
   
 ## Usage
 Source config file 
-  - This config is to authenticate into okta. The Authorization is the Authorization code provide by the okta application manager.
+  - This config is to authenticate into okta. The Authorization code provide by the okta application manager.
   
         {
             "accept": "application/json",
@@ -39,5 +39,15 @@ Source config file
              
             "service_url": ""
         }
+Target config file
+  - This config is to authenticate into snowflake. The token details is provided by the stitch snowflake target 
+      {
+          "disable_collection": "true",
+          
+          "client_id" : XXXX,
+          
+          "token" : "cxxxxxxxxxxxxxxxxxx"
+      }
+
 
 
