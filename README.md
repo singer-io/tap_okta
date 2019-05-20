@@ -41,13 +41,31 @@ Source config file
         }
 Target config file
   - This config is to authenticate into snowflake. The token details is provided by the stitch snowflake target 
+  
       {
-          "disable_collection": "true",
+            "disable_collection": "true",
           
-          "client_id" : XXXX,
+            "client_id" : XXXX,
           
-          "token" : "cxxxxxxxxxxxxxxxxxx"
+            "token" : "cxxxxxxxxxxxxxxxxxx"
       }
+ 
+## Run the Tap
+  - tap-okta.py -c config.json | target-stitch -c target_config.json
+Messages are written to standard output following the Singer specification. The resultant stream of JSON data can be consumed by a Singer target.
+### Pagination:
+  -By Default 200 records are extracted from  the source json payload, so the pagination logic is implemented to loop through all the records from source json payload and load into the stitch target 
+  
+## Replication Methods and State File
+  Full Table
+    groups
+    users
+    applications
+  State File
+    None.
+
+
+
 
 
 
