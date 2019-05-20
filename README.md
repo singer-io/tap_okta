@@ -26,7 +26,7 @@ In the directory:
 Source config file 
   - This config is to authenticate into okta. The Authorization is the Authorization code provide by the okta application manager.
   
-      {
+        {
             "accept": "application/json",
             
             "content-type": "application/json",
@@ -38,6 +38,6 @@ Source config file
             "username": "",
              
             "service_url": ""
-       }
+        }
 
 
