@@ -1,8 +1,8 @@
 {
   "accept": "application/json",
   "content-type": "application/json",
-  "Authorization": "SSWS 00n3bFSlFPqsFZopLmSaHSIt5I-H3loSeRvrTkqHQh",
-  "password": "T@lend2019!",
-  "username": "kdamodaran@talend.com",
-  "service_url": "https://talend3.okta.com/api/v1/"
+  "Authorization": "SSWS XXXXXXXh",
+  "password": "TXXXXXX!",
+  "username": "XXXXX@talend.com",
+  "service_url": "https:XXXXXX"
 }
