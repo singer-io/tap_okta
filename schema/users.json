@@ -38,7 +38,7 @@
         "null",
         "string"
       ],
-	  "format": "date-time"
+      "format": "date-time"
     },
     "lastUpdated": {
       "type": [
@@ -60,7 +60,7 @@
         "object"
       ],
       "properties": {
-		"ssoid": {
+        "ssoid": {
           "type": [
             "null",
             "string"
@@ -90,7 +90,7 @@
             "string"
           ]
         },
-		"grpList": {
+        "grpList": {
           "type": [
             "null",
             "string"
