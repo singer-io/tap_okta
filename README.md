@@ -27,10 +27,6 @@ Source config file
   - This config is to authenticate into okta. The Authorization code provide by the okta application manager.
   
         {
-            "accept": "application/json",
-            
-            "content-type": "application/json",
-            
             "Authorization": "SSWS 0XXXXXX",
             
             "password": "",
@@ -39,20 +35,9 @@ Source config file
              
             "service_url": ""
         }
-Target config file
-  - This config is to authenticate into snowflake. The token details is provided by the stitch snowflake target.
-  
-        {
-        
-            "disable_collection": "true",
-          
-            "client_id" : XXXX,
-          
-            "token" : "cxxxxxxxxxxxxxxxxxx"
-        }
  
 ## Run the Tap
-    - tap-okta.py -c config.json | target-stitch -c target_config.json
+    tap-okta.py -c config.json | target-stitch -c target_config.json
   
  Messages are written to standard output following the Singer specification. The resultant stream of JSON data can be consumed by a Singer target.
     
