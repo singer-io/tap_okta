@@ -113,8 +113,8 @@ def get_abs_path(path):
 
 def load_schemas():
 
-    for filename in os.listdir(get_abs_path('schema')):
-        path = get_abs_path('schema') + '\\' + filename
+    for filename in os.listdir(get_abs_path('schemas')):
+        path = get_abs_path('schemas') + '\\' + filename
         file_raw = filename.replace('.json', '')
         with open(path) as file:
             schemas[file_raw] = json.load(file)
