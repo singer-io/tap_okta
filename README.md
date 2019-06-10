@@ -1,5 +1,3 @@
-# tap-okta
-This is a singer tap that produces JSON-formatted data following the Singer spec.
 
 This tap:
   - Pulls raw data from the Okta Api
@@ -13,7 +11,8 @@ This tap:
   - Full table load 
   
 ## Requirements and Installation
-For more requirements,example and information about running a singer tap see the singer instructions [a link](https://github.com/singer-io/getting-started/blob/master/docs/RUNNING_AND_DEVELOPING.md)
+For more requirements,example and information about running a singer tap see the 
+[singer instructions](https://github.com/singer-io/getting-started/blob/master/docs/RUNNING_AND_DEVELOPING.md)
   
 ## Usage
 Source config file 
