@@ -12,15 +12,8 @@ This tap:
   - Outputs the schema for each resource
   - Full table load 
   
-## Requirements
-  - pip3
-  - python 3.5+
-  - mkvirtualenv
-  
-## Installation
-In the directory:
-  - $ mkvirtualenv -p python3 tap-okta
-  - $ pip3 install -e .
+## Requirements and Installation
+For more requirements,example and information about running a singer tap see the singer instructions [a link](https://github.com/singer-io/getting-started/blob/master/docs/RUNNING_AND_DEVELOPING.md)
   
 ## Usage
 Source config file 
