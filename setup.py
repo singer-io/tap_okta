@@ -28,3 +28,4 @@ setup(
         "schemas": ["tap_okta/schemas/*.json"]
     },
     include_package_data=True,
+)
