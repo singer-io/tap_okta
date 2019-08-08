@@ -25,6 +25,8 @@ def header_payload(p_data):
 
 
 def load_data(p_data):
+    import ipdb; ipdb.set_trace()
+    1+1
     for lst_schema in schema_list:
         if lst_schema == 'users':
             url = p_data['service_url'] + "users"
@@ -94,11 +96,12 @@ def get_abs_path(path):
 
 def load_schemas():
     global schemas
-    for filename in os.listdir(get_abs_path('tap_okta\schemas')):
-        path = get_abs_path('tap_okta\schemas') + '/' + filename
-        file_raw = filename.replace('.json', '')
-        with open(path) as file:
-            schemas[file_raw] = json.load(file)
+    for filename in os.listdir(get_abs_path('schemas')):
+        if filename[-5:] == '.json':
+            path = get_abs_path('schemas') + '/' + filename
+            file_raw = filename.replace('.json', '')
+            with open(path) as file:
+                schemas[file_raw] = json.load(file)
     return schemas
 
 
