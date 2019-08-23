@@ -4,14 +4,25 @@ import singer
 import os
 import datetime
 
+
 from singer import metadata
 
 
 schemas = {}
 LOGGER = singer.get_logger()
 session = requests.session()
-REQUIRED_CONFIG_KEYS = ['accept', 'content-type', 'Authorization', 'service_url']
+REQUIRED_CONFIG_KEYS = ['api_key', 'service_url']
 schema_list = ['groups','users','applications']
+
+
+KEY_PROPERTIES = {
+    'application_groups': ['id'],
+    'application_users': ['id'],
+    'applications': ['id'],
+    'group_users': ['id'],
+    'groups': ['id'],
+    'users':['id']
+}
 
 def header_payload(p_data):
 
@@ -21,6 +32,43 @@ def header_payload(p_data):
         'Authorization': 'SSWS ' + p_data['api_key']
     }
     return header
+
+
+def populate_metadata(schema_name, schema):
+    mdata = metadata.new()
+    mdata = metadata.write(mdata, (), 'table-key-properties', KEY_PROPERTIES[schema_name])
+    for field_name in schema['properties'].keys():
+        if field_name in KEY_PROPERTIES[schema_name]:
+            mdata = metadata.write(mdata, ('properties', field_name), 'inclusion', 'automatic')
+        else:
+            mdata = metadata.write(mdata, ('properties', field_name), 'inclusion', 'available')
+    return mdata
+
+
+def get_catalog():
+    raw_schemas = load_schemas()
+    streams = []
+    for schema_name, schema in raw_schemas.items():
+       # get metadata for each field
+        mdata = populate_metadata(schema_name, schema)
+       # create and add catalog entry
+        catalog_entry = {
+            'stream': schema_name,
+            'tap_stream_id': schema_name,
+            'schema': schema,
+            'metadata' : metadata.to_list(mdata),
+            'key_properties': KEY_PROPERTIES[schema_name],
+        }
+
+        streams.append(catalog_entry)
+    return {'streams': streams}
+
+
+def do_discover():
+
+    LOGGER.info('Loading schemas')
+    catalog = get_catalog()
+    """LOGGER.info (json.dumps(catalog, indent=2))"""
 
 
 def load_data(p_data):
@@ -105,6 +153,8 @@ def main():
 
     args = singer.utils.parse_args(REQUIRED_CONFIG_KEYS)
     if args.config:
+        if args.discover:
+            do_discover()
         load_schemas()
         load_data(args.config)
 
