@@ -13,13 +13,12 @@ session = requests.session()
 REQUIRED_CONFIG_KEYS = ['accept', 'content-type', 'Authorization', 'service_url']
 schema_list = ['groups','users','applications']
 
-
 def header_payload(p_data):
 
     header = {
-        'accept': p_data['accept'],
-        'content-type': p_data['content-type'],
-        'Authorization': p_data['Authorization']
+        'accept': 'application/json',
+        'content-type': 'application/json',
+        'Authorization': 'SSWS ' + p_data['api_key']
     }
     return header
 
