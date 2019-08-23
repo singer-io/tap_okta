@@ -19,12 +19,8 @@ Source config file
   - This config is to authenticate into okta. The Authorization code provide by the okta application manager.
   
         {
-            "Authorization": "SSWS 0XXXXXX",
-            
-            "password": "",
-            
-            "username": "",
-             
+            "api_key": "0XXXXXX",         
+                         
             "service_url": ""
         }
  
