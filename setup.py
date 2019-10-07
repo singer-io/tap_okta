@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="tap-okta",
-    version="0.0.2",
+    version="0.0.3",
     description="Singer.io tap for extracting Okta data",
     author="Kandasamy",
     url="http://github.com/singer-io/tap-okta",
