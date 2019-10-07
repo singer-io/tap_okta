@@ -7,18 +7,20 @@
         "string"
       ]
     },
-    "lastUpdated": {
+	"lastUpdated": {
       "type": [
         "null",
         "string"
       ],
       "format": "date-time"
     },
-    "priority": {
+	"priority": {
       "type": [
         "null",
         "integer"
       ]
     }
-  }
 }
+}
+
+

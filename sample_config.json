@@ -1,11 +1,5 @@
 
 {
-  "Authorization": "SSWS XXXXXXXh",
-
-  "password": "TXXXXXX!",
-
-  "username": "XXXXX@talend.com",
-
+  "api_key": "XXXXXXXh",
   "service_url": "https:XXXXXX"
-
 }
