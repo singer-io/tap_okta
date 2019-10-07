@@ -66,7 +66,7 @@ def get_catalog():
 def do_discover():
     LOGGER.info('Loading schemas')
     catalog = get_catalog()
-    LOGGER.info (json.dumps(catalog, indent=2))
+    print(json.dumps(catalog, indent=2))
 
 
 def do_sync(p_data,state,p_catalog):
@@ -97,7 +97,8 @@ def url_pagination(p_schema, p_url, p_data,p_state):
         response = requests.request("GET", next_url, headers=header)
         if (response.status_code == 200):
             response_links = requests.utils.parse_header_links(
-            response.headers['Link'].rstrip('>').replace('>,<', ',<'))
+                response.headers['Link'].rstrip('>').replace('>,<', ',<')
+            )
             next_url = ""
             for linkobj in response_links:
                 if linkobj['rel'] == 'next':
@@ -145,8 +146,8 @@ def get_abs_path(path):
 
 def load_schemas():
     global schemas
-    for filename in os.listdir(get_abs_path('tap_okta\schemas')):
-        path = get_abs_path('tap_okta\schemas') + '/' + filename
+    for filename in os.listdir(get_abs_path('schemas')):
+        path = get_abs_path('schemas') + '/' + filename
         file_raw = filename.replace('.json', '')
         with open(path) as file:
             schemas[file_raw] = json.load(file)
