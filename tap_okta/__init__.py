@@ -160,7 +160,11 @@ def main():
         if args.discover:
             do_discover()
         else:
-            catalog = args.properties if args.properties else get_catalog()
+            if args.properties:
+                catalog = args.properties
+                load_schemas()
+            else:
+                catalog = get_catalog()
             do_sync(args.config, args.state, catalog)
 
     LOGGER.info('End Date Time : %s', datetime.datetime.now())
