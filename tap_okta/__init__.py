@@ -74,7 +74,7 @@ def do_sync(p_data,state,p_catalog):
         stream_id = stream['tap_stream_id']
         stream_schema = stream['schema']
         mdata = stream['metadata']
-        LOGGER.info('stream_schema :%s',stream_id)
+        singer.write_schema(stream_id, schemas[stream_id], 'id')
         if stream_id == 'users':
             url = p_data['service_url'] + "users"
             url_pagination(stream_id, url, p_data,state)
@@ -92,7 +92,6 @@ def url_pagination(p_schema, p_url, p_data,p_state):
     lst_urs_assign_app = []
     next_url = p_url
     header = header_payload(p_data)
-    singer.write_schema(p_schema, schemas[p_schema], 'id')
     while (next_url):
         response = requests.request("GET", next_url, headers=header)
         if (response.status_code == 200):
@@ -160,7 +159,11 @@ def main():
         if args.discover:
             do_discover()
         else:
-            catalog = args.properties if args.properties else get_catalog()
+            if args.properties:
+                catalog = args.properties
+                load_schemas()
+            else:
+                catalog = get_catalog()
             do_sync(args.config, args.state, catalog)
 
     LOGGER.info('End Date Time : %s', datetime.datetime.now())
