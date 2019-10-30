@@ -3,7 +3,7 @@ import json
 import singer
 import os
 import datetime
-
+import time
 from singer import metadata
 
 schemas = {}
@@ -94,6 +94,7 @@ def url_pagination(p_schema, p_url, p_data,p_state):
     header = header_payload(p_data)
     singer.write_schema(p_schema, schemas[p_schema], 'id')
     while (next_url):
+        time.sleep(2)
         response = requests.request("GET", next_url, headers=header)
         if (response.status_code == 200):
             response_links = requests.utils.parse_header_links(
