@@ -19,13 +19,14 @@ For more requirements,example and information about running a singer tap see the
 ## Usage
 
 Source config file
-  - This config is to authenticate into okta. The Authorization code provide by the okta application manager.
+  - This config is to authenticate into okta. The Authorization code provided by the okta application manager.
   
         {
             "api_key": "0XXXXXX",         
                          
             "service_url": ""
         }
+Do not forget to end service_url with / 
  
 ## Run the Tap
 
